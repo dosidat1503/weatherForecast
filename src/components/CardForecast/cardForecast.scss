@@ -1,0 +1,22 @@
+$imgSize: 3em;
+
+.card-forecast {
+    padding: 0em 1em 1em;   
+    text-align: left;
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        border-radius: 0.65em; 
+        padding: 1em 1em;   
+
+        h5 {
+            font-size: 1em; 
+        }
+    
+        img {
+            width: $imgSize;
+            height: $imgSize;
+        }
+    }
+}

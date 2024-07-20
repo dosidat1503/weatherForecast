@@ -1,0 +1,12 @@
+.home {
+    background-color: #e3f2fd;
+}
+
+.fade-transition {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-transition.fade-in {
+    opacity: 1;
+}

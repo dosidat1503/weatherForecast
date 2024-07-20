@@ -1,0 +1,34 @@
+$imgSize: 6em;
+
+.card-today {  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    border-radius: 0.65em;  
+    padding: 1em 2%;
+    text-align: left;
+}
+
+.card-today-main h3 {
+    font-size: 1.5em;  
+} 
+
+.card-today-sub {
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;  
+
+    div {
+        @media (min-width: 768px) {
+            padding-left: 50%;
+        }
+
+        img {
+            width: $imgSize;
+            height: $imgSize;
+        }
+    }
+}
+ 
+ 
