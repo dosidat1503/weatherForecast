@@ -1,13 +1,15 @@
- 
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-import  { GlobalProvider } from './context/globalVariables.tsx'
+import { createRoot } from 'react-dom/client';
+import App from './App'; 
+import './index.css';
+import { GlobalProvider } from './context/globalVariables';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  // <React.StrictMode>
-  <GlobalProvider>
-    <App />
-  </GlobalProvider>
-  // </React.StrictMode>,
-)
+const root = document.getElementById('root');
+if (root !== null) {
+  createRoot(root).render(
+    // <React.StrictMode>
+    <GlobalProvider>
+      <App />
+    </GlobalProvider>
+    // </React.StrictMode>,
+  );
+}
