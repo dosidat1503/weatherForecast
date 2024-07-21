@@ -9,8 +9,7 @@ import CardForecast from "../../components/CardForecast/cardForecast";
 import SearchLocation from "../../components/SearchLocation/searchLocation";
 import SubcribeMail from "../../components/SubcribeMail/subcribeMail";
  
-import './home.scss'
-import { set } from "date-fns";
+import './home.scss' 
  
 export default function Home() {  
     const { weatherInfoList, setWeatherInfoList, isLoading, setIsLoading } = useGlobalContext()!;
