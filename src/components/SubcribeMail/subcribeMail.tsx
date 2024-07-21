@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+ 
 import request from "../../utils/request";
 import SearchLocationHelper from "../../helpers/searchLocation";
 
@@ -17,9 +17,8 @@ interface SubcribeInfoProps {
     cityName: string
 }
  
-export default function SubcribeMail(){
-
-    const { handleSearchLocation, messageLocationError, setMessageLocationError } = SearchLocationHelper();
+export default function SubcribeMail(){ 
+    const { handleSearchLocation, setMessageLocationError } = SearchLocationHelper();
     const [isLoadingSubcribe, setIsLoadingSubcribe] = useState<boolean>(false);
 
     const [subcribeInfo, setSubcribeInfo] = useState<SubcribeInfoProps>({
@@ -30,48 +29,46 @@ export default function SubcribeMail(){
         content: "",
         status: false
     })
-
+ 
     const handleSubcribeMail = async () => {
-        setIsLoadingSubcribe(true)
-        console.log(subcribeInfo)
+        setIsLoadingSubcribe(true) 
         try {
             if(subcribeInfo.email === "" || subcribeInfo.cityName === ""){
                 setMessage({
                     content: "Enter full information to subcribe",
                     status: false
                 })
-                setIsLoadingSubcribe(false)
-                console.log("subcribeInfo")
-            }  
-            await handleSearchLocation(subcribeInfo.cityName)
-            if(messageLocationError !== ""){
-                setMessage({
-                    content: messageLocationError,
-                    status: false
-                })
-                setIsLoadingSubcribe(false)
-            }
-            else { 
+                setIsLoadingSubcribe(false) 
+            } 
+
+            await handleSearchLocation(subcribeInfo.cityName) 
+            .then((responseOfPromise) => { 
                 request.post('/subcribeMailReceiveInfoDaily', subcribeInfo)
                 .then((response) => { 
                     setMessage({
                         content: response.data.message,
                         status: true
-                    }) 
-                    console.log(messageLocationError)
-                    setIsLoadingSubcribe(false)
+                    })  
+                    setIsLoadingSubcribe(false) 
                 })
                 .catch((error) => {
                     setMessage({
                         content: error.response.data.message,
                         status: false
-                    }) 
-                    console.log(messageLocationError)
+                    })  
                     setIsLoadingSubcribe(false) 
-                })
-            }
-            
-            setMessageLocationError("")
+                }) 
+                
+                console.log(responseOfPromise)
+            })
+            .catch((error) => {
+                setMessage({
+                    content: error,
+                    status: false
+                })  
+                setIsLoadingSubcribe(false)
+            })
+             
         } 
         catch (error) {
             console.error("Error in handleSearchLocation:", error);

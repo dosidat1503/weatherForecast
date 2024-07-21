@@ -16,7 +16,7 @@ interface contextType {
     setWeatherInfoList: (weatherInfoList: WeatherProps[]) => void,
     forecastDayQuantity: number,
     isLoading: boolean,
-    setIsLoading: (isLoading: boolean) => void
+    setIsLoading: (isLoading: boolean) => void,  
 }
 
 const GlobalContext = createContext<contextType | null>({ 
@@ -24,19 +24,20 @@ const GlobalContext = createContext<contextType | null>({
     setWeatherInfoList: () => {},
     forecastDayQuantity: 0,
     isLoading: false,
-    setIsLoading: () => {}
+    setIsLoading: () => {}, 
+
 });
 
 export function GlobalProvider({children}: {children: React.ReactNode}) { 
     const [weatherInfoList, setWeatherInfoList] = useState<WeatherProps[]>([])  
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const forecastDayQuantity = 5
+    const forecastDayQuantity = 5 
 
     return (
         <GlobalContext.Provider value={{
             weatherInfoList, setWeatherInfoList,
             forecastDayQuantity,
-            isLoading, setIsLoading
+            isLoading, setIsLoading, 
         }}>
             {children}
         </GlobalContext.Provider>

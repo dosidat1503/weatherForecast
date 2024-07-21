@@ -6,13 +6,11 @@ import request from "../utils/request"
 import useGlobalContext from "../context/globalVariables";
  
 export default function SearchLocationHelper() {
-    const { forecastDayQuantity, setWeatherInfoList,  setIsLoading } = useGlobalContext()!;
+    const { forecastDayQuantity, setWeatherInfoList, setIsLoading } = useGlobalContext()!;
     const [messageLocationError, setMessageLocationError] = useState<string>("")
 
-    const handleSearchLocation = 
-        (cityName: string) =>  
-            new Promise((resolve, reject) => { 
-             
+    const handleSearchLocation = (cityName: string) => {
+        return new Promise((resolve, reject) => { 
             if(cityName === ""){
                 setMessageLocationError("Enter location to get weather information")
                 setIsLoading(false)
@@ -22,12 +20,9 @@ export default function SearchLocationHelper() {
                     location: cityName, 
                     forecastDayQuantity: forecastDayQuantity 
                 }
-
-                console.log(requestData)
-
+  
                 request.get('/getWeather', { params: requestData })
-                .then(response => {   
-        
+                .then(response => {    
                     let weatherInfoList = response.data.forecast.forecastday.map((forecast: any) => {
                         return {
                             city: response.data.location.name,
@@ -41,8 +36,7 @@ export default function SearchLocationHelper() {
                     }) 
         
                     setWeatherInfoList(weatherInfoList)
-                    localStorage.setItem("weatherInfoList", JSON.stringify(weatherInfoList))
-                    setMessageLocationError("")
+                    localStorage.setItem("weatherInfoList", JSON.stringify(weatherInfoList)) 
                     setIsLoading(false)
                     resolve("Success")
         
@@ -57,9 +51,7 @@ export default function SearchLocationHelper() {
                 })  
             }  
         })
-        .catch((error) => {
-            console.log('Error:', error.response ? error.response.data : error.message)
-        }) 
+    } 
 
     return { handleSearchLocation, messageLocationError, setMessageLocationError }
 }
