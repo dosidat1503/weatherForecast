@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const request = axios.create({
-    baseURL:"https://weather-forecast-server.vercel.app",
+    baseURL:"https://weather-forecast-server.vercel.app/api/",
     headers:{
         "Content-Type":"application/json"
     }

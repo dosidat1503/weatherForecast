@@ -37,6 +37,7 @@ export default function SearchLocationHelper() {
         
                     setWeatherInfoList(weatherInfoList)
                     localStorage.setItem("weatherInfoList", JSON.stringify(weatherInfoList)) 
+                    setMessageLocationError("")
                     setIsLoading(false)
                     resolve("Success")
         

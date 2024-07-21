@@ -16,7 +16,10 @@ git clone https://github.com/dosidat1503/weatherForecastClient
 npm install
 ```
 
-### 4. Run project
+### 4. Edit baseURL send request in file request:
+- Open file request in folder /src/utils, change `https://weather-forecast-server.vercel.app/api/` to `http://localhost:8000/api/`
+
+### 5. Run project
 - Start project with command:
 ```html
 npm run dev
