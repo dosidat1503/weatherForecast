@@ -21,7 +21,10 @@ export default function SearchLocationHelper() {
                     location: cityName, 
                     forecastDayQuantity: forecastDayQuantity 
                 }
-                request.get('/weather', { params: requestData })
+
+                console.log(requestData)
+
+                request.get('/getWeather', { params: requestData })
                 .then(response => {   
         
                     let weatherInfoList = response.data.forecast.forecastday.map((forecast: any) => {
