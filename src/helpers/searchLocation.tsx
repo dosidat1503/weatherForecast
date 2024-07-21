@@ -11,7 +11,7 @@ export default function SearchLocationHelper() {
 
     const handleSearchLocation = 
         (cityName: string) =>  new Promise((resolve, reject) => { 
-              
+             
             if(cityName === ""){
                 setMessageLocationError("Enter location to get weather information")
                 setIsLoading(false)
@@ -48,13 +48,16 @@ export default function SearchLocationHelper() {
                 })
                 .catch((error) => {
         
-                    console.log(error) 
+                    console.log('Error:', error.response ? error.response.data : error.message);
                     setMessageLocationError("City not found")
                     setIsLoading(false)
                     reject("City not found")
-        
+                    
                 })  
             } 
+        })
+        .catch((error) => {
+            console.log('Error:', error.response ? error.response.data : error.message); 
         })
 
     return { handleSearchLocation, messageLocationError, setMessageLocationError }

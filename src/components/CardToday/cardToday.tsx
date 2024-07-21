@@ -25,7 +25,7 @@ export default function CardToday({weatherInfo}: CardTodayProps) {
                             src={weatherInfo.conditionCurrentImage} 
                             alt="conditionCurrent"
                         /> 
-                        <p className="mb-0">{weatherInfo.conditionCurrent}</p> 
+                        <p className="mb-0 ">{weatherInfo.conditionCurrent}</p> 
                     </div>
                 </div>   
             </div>

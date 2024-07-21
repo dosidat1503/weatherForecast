@@ -10,6 +10,7 @@ import SearchLocation from "../../components/SearchLocation/searchLocation";
 import SubcribeMail from "../../components/SubcribeMail/subcribeMail";
  
 import './home.scss'
+import { set } from "date-fns";
  
 export default function Home() {  
     const { weatherInfoList, setWeatherInfoList, isLoading, setIsLoading } = useGlobalContext()!;
@@ -19,7 +20,7 @@ export default function Home() {
     useEffect(() => { 
         const savedWeatherInfoList = localStorage.getItem('weatherInfoList');
         const currentDate = new Date().toISOString().split('T')[0];
-
+        
         if (savedWeatherInfoList) 
         {
             const weatherInfoListLocalStorage = JSON.parse(savedWeatherInfoList); 

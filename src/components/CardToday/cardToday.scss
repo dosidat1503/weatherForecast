@@ -5,8 +5,11 @@ $imgSize: 6em;
     flex-direction: row;
     justify-content: space-between; 
     border-radius: 0.65em;  
-    padding: 1em 2%;
-    text-align: left;
+    padding: 1em 2%; 
+}
+
+.card-today-main{
+    text-align: left; 
 }
 
 .card-today-main h3 {

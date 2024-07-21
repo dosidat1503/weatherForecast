@@ -1,5 +1,9 @@
 import { useState } from "react";
+
+import useGlobalContext from "../../context/globalVariables";
+
 import Button from "../Button/button"
+
 import './searchLocation.scss'
 
 interface SearchLocationProps {
@@ -9,7 +13,14 @@ interface SearchLocationProps {
 
 export default function SearchLocation({handleSearchLocation, message}: SearchLocationProps){
 
+    const { setIsLoading } = useGlobalContext()!;
+
     const [cityName, setCityName] = useState<string>("");
+
+    const handleClickButtonSearch = () => {
+        setIsLoading(true)
+        handleSearchLocation(cityName)
+    }
 
     return (
         <div className="search-location"> 
@@ -27,7 +38,7 @@ export default function SearchLocation({handleSearchLocation, message}: SearchLo
             {message ? <p className="text-danger mt-1">{message}</p> : <br></br>}
             <Button 
                 name="Search" 
-                onClick={() => handleSearchLocation(cityName)} 
+                onClick={() => handleClickButtonSearch()} 
                 backgroundColor="primary"
             />
             <div className="divider">or</div>
