@@ -10,7 +10,8 @@ export default function SearchLocationHelper() {
     const [messageLocationError, setMessageLocationError] = useState<string>("")
 
     const handleSearchLocation = 
-        (cityName: string) =>  new Promise((resolve, reject) => { 
+        (cityName: string) =>  
+            new Promise((resolve, reject) => { 
              
             if(cityName === ""){
                 setMessageLocationError("Enter location to get weather information")
@@ -54,11 +55,11 @@ export default function SearchLocationHelper() {
                     reject("City not found")
                     
                 })  
-            } 
+            }  
         })
         .catch((error) => {
-            console.log('Error:', error.response ? error.response.data : error.message); 
-        })
+            console.log('Error:', error.response ? error.response.data : error.message)
+        }) 
 
     return { handleSearchLocation, messageLocationError, setMessageLocationError }
 }

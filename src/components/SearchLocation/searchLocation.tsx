@@ -19,7 +19,7 @@ export default function SearchLocation({handleSearchLocation, message}: SearchLo
 
     const handleClickButtonSearch = () => {
         setIsLoading(true)
-        handleSearchLocation(cityName)
+        handleSearchLocation(cityName)  
     }
 
     return (
