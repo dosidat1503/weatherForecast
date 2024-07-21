@@ -26,3 +26,5 @@ npm run dev
 ```
 - You can access it in your browser at http://localhost:5173
 
+## Demo
+- Watch demo weather forecast website at [link](https://drive.google.com/file/d/1ISeSxE0mma--lcwliDHAehucGFS0_kPz/view?usp=sharing)
